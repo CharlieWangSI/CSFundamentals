@@ -1,0 +1,55 @@
+> Why do programmers use pseudocode?
+A: Pseudocode is an informal language that helps programmers to develop algorithms. It is a way to express what code should do without using a particular language's syntax.
+
+> If you run pseudocode on your computer what would happen?
+A: It will not run on computer, nothing would happen. 
+
+> Create a function that takes two numbers and prints out the greater number.
+A: 
+
+\INPUT first number
+INPUT second number
+IF first number is greater than second number THEN
+  PRINT first number
+ELSE IF second number is greater than first number THEN
+  PRINT second number
+ELSE
+  PRINT “TIE!”
+END IF\
+
+> Create a function that prints out the numbers from 1 to 100.
+A: 
+
+\INIT count to 1
+INPUT a number
+WHILE count is smaller than or equal to 100
+  PRINT count
+  count=count+1
+END WHILE\
+
+> Create a function that searches for a specific entry in a phonebook.
+A:
+
+\INPUT Object phonebook with multiple arrays of entries, each with two properties: name and number
+INPUT name
+INIT count to 0
+INIT number
+WHILE name is not equal to the number property of the entry
+  count=count+1
+END WHILE
+Assign the number property of the entry to variable number
+RETURN number\
+
+
+> Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
+
+A:
+let count=0
+let number
+
+function search(phonebook, name){
+while (name!=phonebook[count].name){
+count=count+1;
+}
+number=phonebook[count].number
+}
