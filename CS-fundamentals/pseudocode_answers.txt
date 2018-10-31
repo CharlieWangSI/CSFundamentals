@@ -44,12 +44,9 @@ RETURN number\
 > Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
 A:
-let count=0
-let number
 
 function search(phonebook, name){
-while (name!=phonebook[count].name){
-count=count+1;
+for (let i=0;i<phonebook.length;i++){
+if (name==phonebook[i].name){return phonebook[i].number;}
 }
-number=phonebook[count].number
 }
