@@ -1,0 +1,53 @@
+> What is a hash table?
+A: In computer science, the hash data structure, also referred to as a hash table, is a type of data structure that stores each value by linking it to a key, forming key-value pairs, just like JavaScript objects.
+
+> What is hashing?
+A: Hashing is the conversion from a string to a numerical index.
+
+> How does a hash table store data?
+A: A hashing function is used to convert the key to a specific, fixed-length number, referred to as a hash code. Once a hash table has a hash code it can use as a key, it can figure out where to place the key-value pair in its internal array.
+
+> How are hash tables and objects different?
+A: If your data is a static number of distinct values of different types, then an object is the optimal choice. Use a hash table when your data contains a variable number of consistently formatted values, each with an identifier.
+
+>Determine whether you would use a hash table or an object to store each of the following pieces of data:
+A:
+A list of pets and their unique names:object
+The name, age, and the birthday of your best friend: object
+The name and location of every company in a given city: hash table
+All of the books checked out from a library by a particular individual: array
+The primary and secondary phone numbers for a contact: array
+
+>Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
+A:
+
+function lookupCustomer(name, address, number){
+  CREATE HashMapCustomer
+  CREATE HashMapName
+  STORE name(key) into HashMapName and associate with address (value)
+  STORE number(key) into HashMapCustomer and associate with HashMap (value)
+}
+
+>Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+A: 
+
+function createInventory(name, amount){
+  CREATE HashMapInventory
+  STORE name(key) into HashMapInventory and associate with amount (value)
+  return HashMapInventory
+}
+
+function trackInventory(name, HashMapInventory){
+  return HashMapInventory(name)
+}
+
+>Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
+A:
+
+function lookforNewspapers(content, publisher,publication_date){
+  CREATE HashMapNewspapers
+  CREATE HashMapDate
+  STORE publication_date(key) into HashMapDate and associate with content (value)
+  STORE publisher(key) into HashMapNewspaper and associate with HashMapDate (value)
+  return HashMapNewspapers
+}
