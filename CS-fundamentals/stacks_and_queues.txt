@@ -8,50 +8,40 @@ A: They are both common place data structure.
 
 > Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use for each option and why?
 
-A: Undo: LIFO - we use “pop” method from a Stack data structure to UNDO an action
-   REDO: FIFO - we want to re-implement the latest task so we should use FIFO to access the most recent task
+A: The data structure for undo and redo is a stack. We can use separate stacks for undo and redo information, and simply transfer items between them, i.e.:
+
+every new action you do is pushed on the undo stack,
+every undo pops an item off the undo stack and pushes it onto the redo stack,
+every redo pops an item off the redo stack and pushes it onto the undo stack.
 
 > Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
 
 A: We want to use the push and pop method of a Stack data structure.
 
-  FUNCTION REVERSE(original)
-    INIT a new stack
-    FOR each character in original
-      CALL stack.push WITH character
-    END FOR
-    INIT reversed to empty string
-    WHILE stack is not empty
-      CALL stack.pop RETURNING character
-      APPEND character to reversed
-    END WHILE
+  FUNCTION REVERSE(original){
+    new stack = “”
+    FOR (i=0;i<original.length;i++){
+     stack.push WITH original[i]
+    }
+    new reversed =“”
+    WHILE (stack !=null){
+     reversed.append(stack.pop())
+    }
     RETURN reversed
-  END FUNCTION
+  }
 
 > Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
 
-A: Pseudocode - 
+A: 
 
-FUNCTION enqueue(element)
-  APPEND element to the end of the list
-END FUNCTION
-FUNCTION dequeue
-  REMOVE FIRST element of list from list RETURNING FIRST element
-  ADD FIRST element to FIRST index of REVERSED QUEUE
-  RETURN REVERSED QUEUE
-END FUNCTION
+FUNCTION dequeue(queue){
+  queue.slice(1,queue.length)
+  RETURN queue[0]
+}
 
-FUNCTION REVERSE(original)
-  INIT a new Queue
-  FOR each character in original
-    Queue.append(character)
-  END FOR
-  INIT reversed to empty string
-  WHILE Queue is not empty
-    Queue.shift() RETURNING character
-    APPEND character to reversed 
-  RETURN reversed
-END FUNCTION
+FUNCTION pop(queue){
+ queue.dequeue
+}
 
 > To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
 
@@ -59,13 +49,12 @@ Implement the enqueue and dequeue methods defined in the checkpoint inside your 
 
 A: 
 
-FUNCTION DELETE(original)
-  INIT a new queue
-  FOR each item in queue
-    call enqueue (item) 
-  END FOR
-  INIT deleted to empty string
-  WHILE queue is not empty
-    call dequeue
-  RETURN queue
-END FUNCTION
+FUNCTION DELETE(original){
+  FOR (i=0;i<original.length-1;i++){
+    enqueue (original[i]) 
+  }
+  WHILE (queue!=null){
+   queue.dequeue
+   RETURN queue
+ }
+}
