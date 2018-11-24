@@ -46,20 +46,20 @@ Output: a -> c -> d
 
 A: 
 
-FUNCTION remove(LinkedList.head)
-IF (LinkedList.head==null)
- RETURN LinkedList.head
-END IF
-SET pre = LinkedList.head
-SET cur = LinkedList.head.next
+FUNCTION remove(listHead){
+IF (listHead.next==null){
+ RETURN listHead
+}
+SET pre = listHead
+SET cur = listHead.next
 
-WHILE (cur!=null)
- IF (cur.value=pre.value)
+WHILE (cur!=null){
+ IF (cur.value=pre.value){
   pre.next=cur.next
- cur=cur.next
-END IF
-END WHILE
-END FUNCTION
+  cur=cur.next
+ }
+}
+}
 
 > Given an unsorted singly linked list, reverse it.
 Example
@@ -68,19 +68,19 @@ Output: d -> c -> b -> a
 
 A: 
 
-FUNCTION reverse(LinkedList.head)
-IF (LinkedList.head==null)
- RETURN LinkedListHead
-END IF
-SET end=LinkedList[-1]
-SET end.next=head
+FUNCTION reverse(linkHead){
+SET pre = listHead
+SET cur = listHead.next
+IF (cur==null){
+ RETURN pre
+}
 
-WHILE (cur!=null)
+WHILE (end!=null){
  SET temp=cur.next
  SET cur.next=temp.next
  SET temp.next=end.next
  SET end.next=temp
-END WHILE 
+}
 RETURN end.next
-END FUNCTION
+}
  
