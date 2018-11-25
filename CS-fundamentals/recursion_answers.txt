@@ -1,0 +1,51 @@
+> Define and compare recursion and iteration.
+
+A: The word recursive describes a process performed by repeating the same steps until it is complete. In programming, we use "recursive" to describe a procedure (i.e., a function) that calls itself, and we call this technique recursion. When problems are solved using loops, we call the technique iteration. We can implement most algorithms either recursively or iteratively, but each way has trade-offs. Recursive solutions tend to run slower and are more subject to system limitations than iterative solutions. However, iterative solutions can sometimes be harder to implement.
+
+> Name five algorithms that are commonly implemented by recursion.
+
+A: Factorial of a Number,  Greatest Common Divisor, Fibonacci Numbers, Recursive Binary Search, Linked List Print, Merge Sort
+
+> When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+A: When an algorithm can be defined as a combination of sub-results starting with known cases, then a recursive solution makes the most sense because that is precisely what it handles (e.g., factorial). And since loops are great at running straight through a data set, algorithms requiring a pass over a collection works well as an iterative solution (e.g., finding the maximum). 
+
+> Compare the recursive and iterative solutions to the three algorithms from the checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+
+A: 
+Factorial/Fibonacci: These two algorithms can be defined as a combination of sub-results starting with known cases, so a recursive solution makes the most sense because that is precisely what it handles 
+
+Maximum: it requires a pass over a collection and runs through the data set, which works well as an iterative solution
+
+> Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+A:
+
+FUNCTION inputLength(input)
+  IF length of input < 1 THEN
+    ERROR
+  ELSE IF length of input =1 THEN
+    RETURN 1
+  ELSE
+    CALL inputLength WITH input without first element RETURNING nextNum
+    RETURN 1+ nextNum
+  END IF
+END FUNCTION
+
+>A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+A: 
+
+FUNCTION checkPalin(w1,w2)
+  IF w1==w2 THEN
+    RETURN true
+  ELSE IF the last element of w1 != the first element of w2 THEN
+    RETURN false
+  ELSE
+    CALL checkPalin with w1 without the first element and w2 without the last element
+  END IF
+END FUNCTION
+
+> Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+A: The word ‘recursion’ is a mathematical term that means “the application of a function to its own values to generate an infinite sequence of values.” If you were to click on Google’s suggested word each time, you would be creating an infinite loop of searches. 
