@@ -1,0 +1,49 @@
+> What is a real-life scenario that uses linear search?
+
+A: Check to see if a letter exists in a string
+
+> What is a real-life scenario that uses binary search?
+
+A: find the location of a number in a sorted array of numbers 
+
+> Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+A: 7
+
+> Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+A: 3
+
+> Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: I would choose linear because it’s unsorted. Binary search requires sorted collection.
+
+> Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: I would use binary search because for sorted collection binary search can discard data by comparing the sought after item to the middle item of the collection, making it much faster
+
+> You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+A: 
+
+FUNCTION findWord(word,dictionary){
+ for (let i=0;i<dictionary.length;i++){
+  if(word==dictionary[i]){
+   return dictionary.indexof(word)
+  }else{
+   return “word not existed”
+  }
+ }
+}
+
+> You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+FUNCTION findWhite(fishTank){
+ whiteFish=[]
+ for (let i=0;i<fishTank.length;i++){
+  if(fishTank[i].color==“white”){
+   whiteFish.append(fishTank[i])
+  }
+ return whiteFish
+ }
+}
