@@ -12,42 +12,71 @@ A: If your data is a static number of distinct values of different types, then a
 
 >Determine whether you would use a hash table or an object to store each of the following pieces of data:
 A:
-A list of pets and their unique names:object
-The name, age, and the birthday of your best friend: object
-The name and location of every company in a given city: hash table
-All of the books checked out from a library by a particular individual: array
-The primary and secondary phone numbers for a contact: array
+A list of pets and their unique names:Hash table
+The name, age, and the birthday of your best friend: Object
+The name and location of every company in a given city: Object
+All of the books checked out from a library by a particular individual: Hash table
+The primary and secondary phone numbers for a contact: Hash table
 
 >Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 A:
 
-function lookupCustomer(name, address, number){
-  CREATE HashMapCustomer
-  CREATE HashMapName
-  STORE name(key) into HashMapName and associate with address (value)
-  STORE number(key) into HashMapCustomer and associate with HashMap (value)
+customerDatabse=[]
+
+function setCustomer(name, address, number){
+  var i = hash(number)
+  customerDatabase[i].push([number,{name,address}])
+  RETURN customerDatabase
+}
+
+function lookupCustomer(customerDatabase, number){
+  var i = hash(number)
+  customerDatabase[i].forEach(pairs=>{
+   if (pairs[0]===number){
+     let results=pairs[1]
+}
+})
+  RETURN results
 }
 
 >Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 A: 
 
-function createInventory(name, amount){
-  CREATE HashMapInventory
-  STORE name(key) into HashMapInventory and associate with amount (value)
-  return HashMapInventory
+inventoryHash=[]
+
+function setInventory(name, amount){
+  var i = hash(name)
+  inventoryHash[i].push([name,amount])
+  RETURN inventoryHash
 }
 
-function trackInventory(name, HashMapInventory){
-  return HashMapInventory(name)
+function lookupInventory(inventoryHash,name){
+  var i = hash(name)
+  inventoryHash[i].forEach(pairs=>{
+   if (pairs[0]===name){
+     let results=pairs[1]
+}
+})
+  RETURN results
 }
 
 >Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
 A:
 
-function lookforNewspapers(content, publisher,publication_date){
-  CREATE HashMapNewspapers
-  CREATE HashMapDate
-  STORE publication_date(key) into HashMapDate and associate with content (value)
-  STORE publisher(key) into HashMapNewspaper and associate with HashMapDate (value)
-  return HashMapNewspapers
+newspaperHash=[]
+
+function setHash(content,publisher,publication_date){
+  var i = hash({publisher,publication_date})
+  newspaperHash[i].push([{publisher,publication_date},content])
+  RETURN newspaperHash
+}
+
+function lookupNews(inventoryHash,publisher,publication_date){
+  var i = hash({publisher,publication_date})
+  newspaperHash[i].forEach(pairs=>{
+   if (pairs[0]==={publisher,publication_date}){
+     let results=pairs[1]
+}
+})
+  RETURN results
 }
