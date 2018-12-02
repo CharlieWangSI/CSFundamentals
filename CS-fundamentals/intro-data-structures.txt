@@ -16,7 +16,7 @@ A:
 
 FUNCTION inset(name){
  let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- peopleLine.push(“name”)
+ peopleLine.push(name)
  return peopleLine
 }
 
@@ -26,7 +26,7 @@ A:
 
 FUNCTION findIndex(name){
  let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- nameIndex=peopleLine.indexOf(“name”)
+ nameIndex=peopleLine.indexOf(name)
  return nameIndex
 }
 
@@ -36,7 +36,7 @@ A:
  
 FUNCTION findIndex(name){
  let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- nameIndex=peopleLine.indexOf(“name”)
+ nameIndex=peopleLine.indexOf(name)
  if (nameIndex!=null){return nameIndex} 
  else {return “name not found”}
 }
