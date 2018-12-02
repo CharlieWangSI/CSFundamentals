@@ -19,13 +19,13 @@ every redo pops an item off the redo stack and pushes it onto the undo stack.
 A: We want to use the push and pop method of a Stack data structure.
 
   FUNCTION REVERSE(original){
-    new stack = “”
-    FOR (i=0;i<original.length;i++){
-     stack.push WITH original[i]
+    var stack = “”
+    FOR (var i=0;i<original.length;i++){
+     stack.push(original[i])
     }
-    new reversed =“”
-    WHILE (stack !=null){
-     reversed.append(stack.pop())
+    var reversed =“”
+    WHILE (stack !== null) {
+     reversed.append(stack.pop());
     }
     RETURN reversed
   }
@@ -41,6 +41,7 @@ FUNCTION dequeue(queue){
 
 FUNCTION pop(queue){
  queue.dequeue
+ RETURN queue
 }
 
 > To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
@@ -58,3 +59,4 @@ FUNCTION DELETE(original){
    RETURN queue
  }
 }
+
