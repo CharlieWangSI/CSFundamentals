@@ -27,15 +27,25 @@ A: I would use binary search because for sorted collection binary search can dis
 A: 
 
 FUNCTION findWord(word,dictionary){
- for (let i=0;i<dictionary.length;i++){
-  if(word==dictionary[i]){
-   return dictionary.indexof(word)
-  }else{
-   return “word not existed”
-  }
- }
-}
+ var low =0
+ var high =dictionary.length
 
+ WHILE (low <= high){
+   var mid = (low + high) / 2
+   FOR (let i=0;i<word.length;i++){
+     IF (dictionary[mid][i] > word[i]){
+       high = mid - 1}
+     ELSE IF (dictionary[mid][i] < word[i]){
+       low = mid + 1}
+     ELSE{
+       RETURN mid}
+   }
+  }
+
+ RETURN “Not Found”
+ }
+
+ 
 > You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
 
 FUNCTION findWhite(fishTank){
