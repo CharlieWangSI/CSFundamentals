@@ -24,7 +24,7 @@ A:
 
 We want to iterate through the linked list to find the last item, then append the element to the last item. The bug is that the existing code won’t iterate through the linked list and would only work for a linked list with <2 items. 
 
-FUNCTION push(element)
+FUNCTION push(element){
 CREATE node
 SET node.value TO element
 SET node.next TO null
@@ -47,18 +47,18 @@ Output: a -> c -> d
 A: 
 
 FUNCTION remove(listHead){
-IF (listHead.next==null){
- RETURN listHead
-}
-SET pre = listHead
-SET cur = listHead.next
+  IF (listHead.next==null){
+   RETURN listHead
+  }
+  var pre = listHead
+  var cur = listHead.next
 
-WHILE (cur!=null){
- IF (cur.value=pre.value){
-  pre.next=cur.next
-  cur=cur.next
- }
-}
+  WHILE (cur!=null){
+   IF (cur.value=pre.value){
+    pre.next=cur.next
+    cur=cur.next
+   }
+  }
 }
 
 > Given an unsorted singly linked list, reverse it.
@@ -69,18 +69,18 @@ Output: d -> c -> b -> a
 A: 
 
 FUNCTION reverse(linkHead){
-SET pre = listHead
-SET cur = listHead.next
-IF (cur==null){
- RETURN pre
-}
+  var pre = listHead
+  var cur = listHead.next
+  IF (cur==null){
+   RETURN pre
+  }
 
-WHILE (end!=null){
- SET temp=cur.next
- SET cur.next=temp.next
- SET temp.next=end.next
- SET end.next=temp
-}
-RETURN end.next
+  WHILE (var end!=null){
+   var temp=cur.next
+   cur.next=temp.next
+   temp.next=end.next
+   end.next=temp
+  }
+  RETURN end.next
 }
  
