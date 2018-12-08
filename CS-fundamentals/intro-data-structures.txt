@@ -14,8 +14,8 @@ b) Insert a new person, "Mary" at the end of the line. In other words, you shoul
 
 A: 
 
-FUNCTION inset(name){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+function insert(name){
+ var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
  peopleLine.push(name)
  return peopleLine
 }
@@ -24,8 +24,8 @@ c) Find a person in line named "Josh." This function should return the position 
 
 A: 
 
-FUNCTION findIndex(name){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+function findIndex(name){
+ var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
  nameIndex=peopleLine.indexOf(name)
  return nameIndex
 }
@@ -34,40 +34,33 @@ d) Find a person in line named "Emily." What should your function return if it d
 
 A: 
  
-FUNCTION findIndex(name){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+function findIndex(name){
+ var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
  nameIndex=peopleLine.indexOf(name)
  if (nameIndex!=null){return nameIndex} 
- else {return “name not found”}
+ else {return null}
 }
 
 e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
 
 A: 
 
-FUNCTION lineCutting(name,cutter){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- let firstLine=peopleLine.slice(0,peopleLine.indexOf(name)-1)
-   let secondLine=peopleLine.slice(peopleLine.indexOf(name),peopleLine.length)
-   firstLine.push(cutter)
-   firstLine.concat(secondLine)
-   return firstLine
-}
-
-or 
-
-FUNCTION lineCutting(name,cutter){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- return peopleLine.splice(peopleLine.indexOf(name),0,cutter)
+function lineCutting(name,cutter){
+ var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+ var firstLine=peopleLine.slice(0,peopleLine.indexOf(name)+1)
+ var secondLine=peopleLine.slice(peopleLine.indexOf(name)+1,peopleLine.length)
+ firstLine.push(cutter)
+ var newLine=firstLine.concat(secondLine)
+ return newLine
 }
    
 
 f) If Patrick wants to leave the line, how would you delete him from the array?
 A:
 
-FUNCTION leaveLine(name){
- let peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- return peopleLine.splice(peopleLine.indexOf(name),1)
+function leaveLine(name){
+ var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+ return newLine=peopleLine.split(peopleLine.indexOf(name),1)
 }
 
 > Provide another real-world example that you can model using a data structure.

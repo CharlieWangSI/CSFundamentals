@@ -1,4 +1,4 @@
-> What is a binary tree and what makes it unique to other trees?
+ > What is a binary tree and what makes it unique to other trees?
 A: Binary Tree is the tree that has up to two child Nodes: a left Node and a right Node. 
 
 > What is a heuristic?
