@@ -18,30 +18,29 @@ every redo pops an item off the redo stack and pushes it onto the undo stack.
 
 A: We want to use the push and pop method of a Stack data structure.
 
-  FUNCTION REVERSE(original){
-    var stack = “”
-    FOR (var i=0;i<original.length;i++){
+  function reverse(original){
+    var stack = []
+    for (var i=0;i<original.length;i++){
      stack.push(original[i])
     }
-    var reversed =“”
-    WHILE (stack !== null) {
-     reversed.append(stack.pop());
+    var reversed = ''
+    while (stack.length>0) {
+     reversed=reversed+stack.pop();
     }
-    RETURN reversed
+    return reversed
   }
 
 > Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
 
 A: 
 
-FUNCTION dequeue(queue){
-  queue.slice(1,queue.length)
-  RETURN queue[0]
-}
-
-FUNCTION pop(queue){
- queue.dequeue
- RETURN queue
+ function pop (queue){
+  len = queue.length;
+  newQueue = [];
+  for(var i=0;i<len-1;i++){
+    newQueue.push(queue[i]);
+  }
+    return newQueue;
 }
 
 > To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
@@ -50,13 +49,27 @@ Implement the enqueue and dequeue methods defined in the checkpoint inside your 
 
 A: 
 
-FUNCTION DELETE(original){
-  FOR (i=0;i<original.length-1;i++){
+class queueC{
+
+  constructor() {
+   this.queue = []
+  }
+
+  enqueue(element){
+    this.queue.push(element)
+  }
+
+  dequeue(someQueue){
+    newQ=someQueue.slice(1,someQueue.length)
+    return newQ
+  }
+  
+  del(original){
+    for (var i=0;i<original.length-2;i++){
     enqueue (original[i]) 
   }
-  WHILE (queue!=null){
-   queue.dequeue
-   RETURN queue
- }
+  return queue
+}
+
 }
 
