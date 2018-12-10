@@ -35,12 +35,13 @@ A: We want to use the push and pop method of a Stack data structure.
 A: 
 
  function pop (queue){
-  len = queue.length;
-  newQueue = [];
-  for(var i=0;i<len-1;i++){
+  var len = queue.length;
+  var newQueue = [];
+  for(var i=0;i<len-2;i++){
     newQueue.push(queue[i]);
   }
-    return newQueue;
+    return queue[len-1];
+    queue=newQueue
 }
 
 > To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
@@ -49,7 +50,7 @@ Implement the enqueue and dequeue methods defined in the checkpoint inside your 
 
 A: 
 
-class queueC{
+class QueueC{
 
   constructor() {
    this.queue = []
@@ -57,18 +58,27 @@ class queueC{
 
   enqueue(element){
     this.queue.push(element)
+    return this.queue
   }
 
-  dequeue(someQueue){
-    newQ=someQueue.slice(1,someQueue.length)
-    return newQ
+  dequeue(){
+    var len = this.queue.length;
+    var newQueue = [];
+    for (var i=1;i<len-1;i++){
+     newQueue.push(this.queue[i])
+   }
+    return this.queue[0]
+    this.queue=newQueue
   }
   
-  del(original){
-    for (var i=0;i<original.length-2;i++){
-    enqueue (original[i]) 
+  del(){
+    var len = this.queue.length;
+    var newQueue = [];
+    for (var i=0;i<len-2;i++){
+    newQueue.enqueue (this.queue[i]) 
   }
-  return queue
+    return this.queue[len-1]
+    this.queue=newQueue
 }
 
 }
