@@ -38,8 +38,11 @@ function findIndex(name){
  var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
  nameIndex=peopleLine.indexOf(name)
  if (nameIndex!=null){return nameIndex} 
- else {return null}
+ else {return “-1”}
 }
+
+findIndex(“Ava”):1
+findIndex(“Tom”):-1
 
 e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
 
@@ -47,8 +50,8 @@ A:
 
 function lineCutting(name,cutter){
  var peopleLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
- var firstLine=peopleLine.slice(0,peopleLine.indexOf(name)+1)
- var secondLine=peopleLine.slice(peopleLine.indexOf(name)+1,peopleLine.length)
+ var firstLine=peopleLine.slice(0,peopleLine.indexOf(name))
+ var secondLine=peopleLine.slice(peopleLine.indexOf(name),peopleLine.length)
  firstLine.push(cutter)
  var newLine=firstLine.concat(secondLine)
  return newLine
