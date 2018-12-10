@@ -24,21 +24,42 @@ A:
 
 We want to iterate through the linked list to find the last item, then append the element to the last item. The bug is that the existing code won’t iterate through the linked list and would only work for a linked list with <2 items. 
 
-FUNCTION push(element){
-CREATE node
-SET node.value TO element
-SET node.next TO null
+function LinkedList(){
+  var length =0;
+  var head =null;
 
-IF the headnode does not exist
- THEN SET head to node
-ELSE
- WHILE not (current.next = null)
- SET current to headnode.next
- SET current.next to node
-END WHILE
-END IF
-END FUNCTION
+  var Node = function(element){
+    this.element=element;
+    this.next=null;
+    this.previous=null;
+  };
 
+  this.size=function(){
+    return length;
+  };
+
+  this.head=function(){
+    return head;
+  }
+
+  this.push=function(element){
+    var node = new Node(element);
+    if (head===null){
+      head=node;
+    }else{
+      var currentNode= head;
+
+      while(currentNode.next){
+        currentNode=currentNode.next;
+      }
+
+      currentNode.next=node;
+    }
+
+    length++;
+  };
+
+}
 > Given an unsorted singly linked list, remove all duplicates from the linked list.
 Example
 Input: a -> c -> d -> d -> a
@@ -46,19 +67,58 @@ Output: a -> c -> d
 
 A: 
 
-FUNCTION remove(listHead){
-  IF (listHead.next==null){
-   RETURN listHead
-  }
-  var pre = listHead
-  var cur = listHead.next
+function LinkedList(){
+  var length =0;
+  var head =null;
 
-  WHILE (cur!=null){
-   IF (cur.value=pre.value){
-    pre.next=cur.next
-    cur=cur.next
-   }
+  var Node = function(element){
+    this.element=element;
+    this.next=null;
+    this.previous=null;
+  };
+
+  this.size=function(){
+    return length;
+  };
+
+  this.head=function(){
+    return head;
   }
+
+  this.push=function(element){
+    var node = new Node(element);
+    if (head===null){
+      head=node;
+    }else{
+      var currentNode= head;
+
+      while(currentNode.next){
+        currentNode=currentNode.next;
+      }
+
+      currentNode.next=node;
+    }
+
+    length++;
+  };
+
+  this.removeDup=function(){
+    var buffer=[];
+    var curr=head;
+    while (curr){
+      for (var i=0;i<buffer.length;i++){
+        if (buffer[i].element == curr.element){
+        curr.previous.next=curr.next
+        length--
+      }
+      else{
+        buffer[i].element=curr.element
+      }
+      }
+      curr=curr.next
+    }
+  }
+
 }
 
 > Given an unsorted singly linked list, reverse it.
@@ -68,19 +128,75 @@ Output: d -> c -> b -> a
 
 A: 
 
-FUNCTION reverse(linkHead){
-  var pre = listHead
-  var cur = listHead.next
-  IF (cur==null){
-   RETURN pre
+function LinkedList(){
+  var length =0;
+  var head =null;
+
+  var Node = function(element){
+    this.element=element;
+    this.next=null;
+    this.previous=null;
+  };
+
+  this.size=function(){
+    return length;
+  };
+
+  this.head=function(){
+    return head;
   }
 
-  WHILE (var end!=null){
-   var temp=cur.next
-   cur.next=temp.next
-   temp.next=end.next
-   end.next=temp
+  this.push=function(element){
+    var node = new Node(element);
+    if (head===null){
+      head=node;
+    }else{
+      var currentNode= head;
+
+      while(currentNode.next){
+        currentNode=currentNode.next;
+      }
+
+      currentNode.next=node;
+    }
+
+    length++;
+  };
+
+  this.removeDup=function(){
+    var buffer=[];
+    var curr=head;
+    while (curr){
+      for (var i=0;i<buffer.length;i++){
+        if (buffer[i].element == curr.element){
+        curr.previous.next=curr.next
+        length--
+      }
+      else{
+        buffer[i].element=curr.element
+      }
+      }
+      curr=curr.next
+    }
   }
-  RETURN end.next
+
+  this.reverse=function(){
+    var stack=[];
+    var curr=head;
+
+    while(curr){
+      stack.push(curr);
+      curr=curr.next;
+    }
+
+    var result=stack.pop();
+    curr=result;
+
+    while (curr){
+      curr.next=stack.pop();
+      curr=curr.next;
+    }
+
+    return result;
+  }
 }
- 
