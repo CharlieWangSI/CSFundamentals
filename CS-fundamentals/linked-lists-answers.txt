@@ -105,21 +105,40 @@ function LinkedList(){
   this.removeDup=function(){
     var buffer=[];
     var curr=head;
+    var prev = null;
     while (curr){
       for (var i=0;i<buffer.length;i++){
         if (buffer[i].element == curr.element){
-        curr.previous.next=curr.next
-        length--
+          prev.next=curr.next
+          length--
+        }
       }
-      else{
-        buffer[i].element=curr.element
-      }
-      }
+      buffer.push(curr);
+      prev = curr;
       curr=curr.next
+
     }
   }
 
-}
+  this.reverse=function(){
+    var stack=[];
+    var curr=head;
+
+    while(curr){
+      stack.push(curr);
+      curr=curr.next;
+    }
+
+    var result=stack.pop();
+    curr=result;
+
+    while (curr){
+      curr.next=stack.pop();
+      curr=curr.next;
+    }
+
+    return result;
+  }
 
 > Given an unsorted singly linked list, reverse it.
 Example
@@ -166,17 +185,18 @@ function LinkedList(){
   this.removeDup=function(){
     var buffer=[];
     var curr=head;
+    var prev = null;
     while (curr){
       for (var i=0;i<buffer.length;i++){
         if (buffer[i].element == curr.element){
-        curr.previous.next=curr.next
-        length--
+          prev.next=curr.next
+          length--
+        }
       }
-      else{
-        buffer[i].element=curr.element
-      }
-      }
+      buffer.push(curr);
+      prev = curr;
       curr=curr.next
+
     }
   }
 
@@ -199,4 +219,3 @@ function LinkedList(){
 
     return result;
   }
-}
