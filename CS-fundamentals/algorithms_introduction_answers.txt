@@ -4,32 +4,32 @@ Making coffee;
 
 A: 
 
-Pour water INTO reservoir THEN
-Put carafe INTO heatingPlate THEN
-Add groundedCoffee INTO filter
+Pour water INTO reservoir OUTPUT carafe THEN
+Put carafe INTO heatingPlate OUTPUT heatedWater THEN
+Add groundedCoffee INTO heatedWater THROUGH filter OUTPUT coffeeMade THEN
 RETURN coffeeMade
 
 Washing dishes;
 
 A:
 
-FILL sink WITH hot water THEN
-SOAK dishes THEN
-ADD soap INTO sink THEN
-WASH dishes THEN
-RINSE  DISHES THEN
-DRY dishes THEN
-PUT AWAY dishes
+FILL sink WITH hot water OUTPUT hotSink THEN
+ADD soap INTO hotSink OUTPUT cleaningFluid THEN
+SOAK dishes IN cleaningFluid OUTPUT dishes THEN
+WASH dishes OUTPUT washedDishes THEN
+RINSE  washedDishes OUTPUT rinsedDishes THEN 
+DRY rinsedDishes OUTPUT cleanDishes THEN
+PUT AWAY cleanDishes
 
 Cooking pastas:
 
 A:
 
-BOIL water IN pot THEN
-Salt water WITH salt THEN
-Add pasta INTO water THEN
-STIR pasta THEN
-DRAIN pasta
+BOIL water IN pot OUTPUT boiledWater THEN
+Salt boiledWater WITH salt OUTPUT saltedWater THEN
+Add pasta INTO saltedWater OUTPUT boiledPasta THEN
+STIR boiledPasta OUTPUT cookedPasta THEN
+DRAIN cookedPasta
 
 As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
 
