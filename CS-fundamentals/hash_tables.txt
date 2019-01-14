@@ -21,62 +21,133 @@ The primary and secondary phone numbers for a contact: Object
 >Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 A:
 
-customerDatabse=[]
-
-function setCustomer(name, address, number){
-  var i = hash(number)
-  customerDatabase[i].push([number,{name,address}])
-  RETURN customerDatabase
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
 }
 
-function lookupCustomer(customerDatabase, number){
-  var i = hash(number)
-  customerDatabase[i].forEach(pairs=>{
-   if (pairs[0]===number){
-     let results=pairs[1]
-}
-})
-  RETURN results
-}
+class customers {
+    constructor() {
+      this.customer=[]
+      this.customerLimit = 50;
+    }
+
+    add(name,address,number) {
+      let customer = {
+        name:name,
+        address:address,
+        number:number
+      };
+      let index = hash(number,this.customerLimit);
+      if (!this.customer[index]) {
+        this.customer[index] = [];
+      } 
+      this.customer[index].push(customer);
+    }
+
+    search(number) {
+    
+      let index = hash(number, this.customerLimit);
+      let result = [];
+      if (!this.customer[index]) { return 'No results found' }
+      this.customer[index].forEach(entry => {
+        if (entry.number === number) {
+          result.push(entry);
+        }
+      })
+
+      return result;
+    }
+  }
 
 >Build a system that allows a store owner to track their store's inventory using a hash table for storage.
 A: 
 
-inventoryHash=[]
-
-function setInventory(name, amount){
-  var i = hash(name)
-  inventoryHash[i].push([name,amount])
-  RETURN inventoryHash
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
 }
 
-function lookupInventory(inventoryHash,name){
-  var i = hash(name)
-  inventoryHash[i].forEach(pairs=>{
-   if (pairs[0]===name){
-     let results=pairs[1]
-}
-})
-  RETURN results
-}
+class inventory {
+    constructor() {
+      this.product=[]
+      this.productLimit = 50;
+    }
+
+    add(name,quantity) {
+      let product = {
+        name:name,
+        quantity:quantity
+      };
+      let index = hash(name,this.productLimit);
+      if (!this.product[index]) {
+        this.product[index] = [];
+      } 
+      this.product[index].push(product);
+    }
+
+    search(name) {
+      let index = hash(name, this.productLimit);
+      let result = [];
+      if (!this.product[index]) { return 'No results found' }
+      this.product[index].forEach(entry => {
+        if (entry.name === name) {
+          result.push(entry);
+        }
+      })
+      return result;
+    }
+  }
 
 >Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data.
 A:
 
-newspaperHash=[]
 
-function setHash(content,publisher,publication_date){
-  var i = hash({publisher,publication_date})
-  newspaperHash[i].push([{publisher,publication_date},content])
-  RETURN newspaperHash
+let hash = (string, max)=> {
+  var hash = 0;
+  for(var i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
 }
 
-function lookupNews(inventoryHash,publisher,publication_date){
-  var i = hash({publisher,publication_date})
-  newspaperHash[i].forEach(pairs=>{
-   if (pairs[0]==={publisher,publication_date}){
-     let results=pairs[1]
-}
-})
-  RETURN results
-}
+  class Newspaper {
+    constructor(){ 
+      this.storage = [];
+      this.digitalCopiesLimit = 40;
+    }
+
+    add(publisher, pubDate) {
+      let key = publisher + pubDate;
+      let story = {
+        publisher: publisher,
+        publishDate: pubDate
+      };
+      let index = hash(key, 100);
+      if (!this.storage[index]) {
+        this.storage[index] = [];
+      } 
+      this.storage[index].push(story);
+    }
+
+    search(publisher, pubDate) {
+      let key = publisher + pubDate;
+      let index = hash(key, this.digitalCopiesLimit);
+      let result = [];
+      if (!this.storage[index]) { return 'No results found' }
+
+      this.storage[index].forEach(entry => {
+        if (entry.publisher === publisher && entry.publishDate === pubDate) {
+          result.push(entry);
+        }
+      })
+
+      return result;
+    }
+  }
