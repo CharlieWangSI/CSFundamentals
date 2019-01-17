@@ -14,9 +14,9 @@ A: If your data is a static number of distinct values of different types, then a
 A:
 A list of pets and their unique names:Hash table
 The name, age, and the birthday of your best friend: Object
-The name and location of every company in a given city: Object
+The name and location of every company in a given city: Hash table
 All of the books checked out from a library by a particular individual: Hash table
-The primary and secondary phone numbers for a contact: Object
+The primary and secondary phone numbers for a contact: Hash table
 
 >Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
 A:
