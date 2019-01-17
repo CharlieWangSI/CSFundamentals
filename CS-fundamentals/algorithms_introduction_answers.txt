@@ -4,32 +4,56 @@ Making coffee;
 
 A: 
 
-Pour water INTO reservoir OUTPUT carafe THEN
-Put carafe INTO heatingPlate OUTPUT heatedWater THEN
-Add groundedCoffee INTO heatedWater THROUGH filter OUTPUT coffeeMade THEN
+IF reservoir is empty
+  Pour water into reservoir OUTPUT carafe
+END IF
+IF carafe is not on heatingPlate 
+  Put carafe into heatingPlate OUTPUT heatedWater
+END IF
+IF more coffee is needed
+  Add groundedCoffee into heatedWater THROUGH filter OUTPUT coffeeMade
+END IF
 RETURN coffeeMade
 
 Washing dishes;
 
 A:
 
-FILL sink WITH hot water OUTPUT hotSink THEN
-ADD soap INTO hotSink OUTPUT cleaningFluid THEN
-SOAK dishes IN cleaningFluid OUTPUT dishes THEN
-WASH dishes OUTPUT washedDishes THEN
-RINSE  washedDishes OUTPUT rinsedDishes THEN 
-DRY rinsedDishes OUTPUT cleanDishes THEN
-PUT AWAY cleanDishes
+WHILE sink is not full 
+  fill sink with hot water OUTPUT hotSink
+END WHILE 
+WHILE there is soap left
+  add soap into hotSink OUTPUT cleaningFluid 
+END WHILE
+WHILE there are dirty dishes left on the table
+  soak dishes in cleaningFluid OUTPUT dishes
+END WHILE
+WHILE dishes are still dirty in the sink
+  wash dishes OUTPUT washedDishes
+  washedDishes OUTPUT rinsedDishes
+  rinsedDishes OUTPUT cleanDishes 
+END WHILE
+RETURN cleanDishes
 
 Cooking pastas:
 
 A:
 
-BOIL water IN pot OUTPUT boiledWater THEN
-Salt boiledWater WITH salt OUTPUT saltedWater THEN
-Add pasta INTO saltedWater OUTPUT boiledPasta THEN
-STIR boiledPasta OUTPUT cookedPasta THEN
-DRAIN cookedPasta
+WHILE water is not boiled
+  boil water in pot OUTPUT boiledWater
+END WHILE 
+WHILE water is plaine
+  salt boiledWater with salt OUTPUT saltedWater
+END WHILE
+WHILE there is pasta on left on the table
+  add pasta into saltedWater OUTPUT boiledPasta 
+END WHILE
+WHILE boiledPasta is not evenly cooked
+  stir boiledPasta OUTPUT cookedPasta 
+END WHILE
+WHILE cookedPasta is not dry
+  drain cookedPasta OUTPUT ready
+RETURN ready
 
 As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
 
