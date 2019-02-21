@@ -22,121 +22,96 @@ A: Binary search tree is an directed, a-cyclic, and unweighted graph
 
 > “Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.”
 A:
-class Node{
-  constructor(val){
+class Node {
+  constructor(val) {
     this.value = val;
     this.left = null;
     this.right = null;
   }
 }
 
-class BinarySearchTree{
-  constructor(){
-    this.root = null;  
+const arr = [1,2,3,4,5,6,7,8,9,10]
+
+// minimal height tree
+const createBST = (arr, l=0, r=arr.length-1) => {
+  if (r < l) {
+    return null;
   }
-  push (val){
-   var root = this.root;
+  const mid = Math.floor((l+r) / 2);
+  const root = new Node(arr[mid]);
+  root.left = createBST(arr, l, mid-1);
+  root.right = createBST(arr, mid+1, r);
 
-   if(!root){
-      this.root = new Node(val);
-      return;
-   }
-
-   var currentNode = root;
-   var newNode = new Node(val); 
-
-   while(currentNode){
-      if(val < currentNode.value){
-          if(!currentNode.left){
-             currentNode.left = newNode;
-             return;
-          }
-          else{
-             currentNode = currentNode.left;
-        }
-     }
-     else{
-         if(!currentNode.right){
-            currentNode.right = newNode;
-            return;
-         }
-         else{
-            currentNode = currentNode.right;
-         }
-     }
-  }
-  }
-  
-  checkExist(value){
-    var temp = this.root
-    var status = false
-    if (temp.value==value){
-      status=true
-  }
-    while (temp.right){
-      if (temp.value>value){
-        temp=temp.left
-    }else if (temp.value<value){
-        temp=temp.right
-    }else if (temp.value==value){
-        status=true
-        }
-        }
-    return status
-    }    
-
-
+  return root;
 }
+
+
+
+const checkExist = (bst,val)=>{
+    var temp = bst.root
+    var status = false
+    if (bst === null) { return false; }
+    if (temp.value==val){
+      status = true
+  }
+    if (temp.value>val){
+        this.checkExist (bst.left,val)
+    }else if (temp.value<value){
+        this.checkExist (bst.right,val)
+    }
+
+    return status
+}
+const bst = this.createBST(arr);
+console.log(bst);
 
 > “Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.”
 A:
-class Node{
-  constructor(val){
+class Node {
+  constructor(val) {
     this.value = val;
     this.left = null;
     this.right = null;
   }
 }
 
-class BinarySearchTree{
-  constructor(){
-    this.root = null;  
+const arr = [1,2,3,4,5,6,7,8,9,10]
+
+// minimal height tree
+const createBST = (arr, l=0, r=arr.length-1) => {
+  if (r < l) {
+    return null;
   }
-  push (val){
-   var root = this.root;
+  const mid = Math.floor((l+r) / 2);
+  const root = new Node(arr[mid]);
+  root.left = createBST(arr, l, mid-1);
+  root.right = createBST(arr, mid+1, r);
 
-   if(!root){
-      this.root = new Node(val);
-      return;
-   }
+  return root;
+}
 
-   var currentNode = root;
-   var newNode = new Node(val); 
 
-   while(currentNode){
-      if(val < currentNode.value){
-          if(!currentNode.left){
-             currentNode.left = newNode;
-             return;
-          }
-          else{
-             currentNode = currentNode.left;
-        }
-     }
-     else{
-         if(!currentNode.right){
-            currentNode.right = newNode;
-            return;
-         }
-         else{
-            currentNode = currentNode.right;
-         }
-     }
+
+const checkExist = (bst,val)=>{
+    var temp = bst.root
+    var status = false
+    if (bst === null) { return false; }
+    if (temp.value==val){
+      status = true
   }
-  }
-  
+    if (temp.value>val){
+        this.checkExist (bst.left,val)
+    }else if (temp.value<value){
+        this.checkExist (bst.right,val)
+    }
 
-getLowestCommon(n1, n2, start) {
+    return status
+}
+const bst = this.createBST(arr);
+console.log(bst);
+
+
+const getLowestCommon=(n1, n2, start) =>{
   const ancestor = start ? start : this.root;
 
   if (ancestor==null){
@@ -152,30 +127,14 @@ getLowestCommon(n1, n2, start) {
   }
   return ancestor;
 
+}  
+
+const getDepth = (bst, val) => {
+  if (bst === null || bst.value === val) { return 0; }
+  return val < bst.value ? 1 + getDepth(bst.left, val) : 1 + getDepth(bst.right, val);
 }
 
-getDepth(val, start, counter) {
-  const ancestor = start ? start : this.root;
-  const step = counter ? counter : 0;
-
-  if (ancestor==null){
-    return null;
-  }
-  if (val == ancestor.value){
-    return 0;
-  }
-  if (val<ancestor.value){
-    return this.getDepth(val,start.left,counter);
-    counter+=;
-  }
-  if (val>ancestor.value){
-    return this.getDepth(val,start.right,counter);
-    counter+=;
-  }
-
-}
-
-getDistance(n1, n2) {
+const getDistance=(n1, n2) => {
   const ancestor = this.getLowestCommon(n1,n2);
   var depth1 = this.getDepth(n1,ancestor);
   var depth2 = this.getDepth(n2,ancestor);
@@ -184,17 +143,9 @@ getDistance(n1, n2) {
   return distance;
 }
 
-}
 
 
 
 
-var bst = new BinarySearchTree();
-bst.push(1);
-bst.push(2);
-bst.push(7);
-bst.push(8);
-bst.push(3);
-bst.push(6);
-bst.push(9);
-bst.push(12);
+
+console.log(this.getDepth(bst, 8));
