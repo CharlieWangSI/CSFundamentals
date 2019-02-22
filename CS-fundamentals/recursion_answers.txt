@@ -21,30 +21,32 @@ Maximum: it requires a pass over a collection and runs through the data set, whi
 
 A:
 
-FUNCTION inputLength(input)
-  IF length of input < 1 THEN
-    ERROR
-  ELSE IF length of input =1 THEN
-    RETURN 1
-  ELSE
-    CALL inputLength WITH input without first element RETURNING nextNum
-    RETURN 1+ nextNum
-  END IF
-END FUNCTION
+function getLength(input){
+  if (input.length == null ||input.length<1){
+    return "Error";
+  }else if (input.length=1){
+    return 1;
+  }else{
+    return 1+this.getLength(input.shift())
+  }
+}
+  
+var input = [1,4,5,7,3,2];
+console.log(this.getLength(input));
 
 >A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
 A: 
 
-FUNCTION checkPalin(w1,w2)
-  IF w1==w2 THEN
-    RETURN true
-  ELSE IF the last element of w1 != the first element of w2 THEN
-    RETURN false
-  ELSE
-    CALL checkPalin with w1 without the first element and w2 without the last element
-  END IF
-END FUNCTION
+function checkPalin(w1,w2){
+  if (w1==w2){
+    return true;
+  }else if (w1[1]!=w2[-1]){
+    return false;
+  }else{
+    checkPalin(w1.shift(),w2.pop());
+  }
+}
 
 > Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
