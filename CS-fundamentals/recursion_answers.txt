@@ -22,17 +22,17 @@ Maximum: it requires a pass over a collection and runs through the data set, whi
 A:
 
 function getLength(input){
-  if (input.length == null ||input.length<1){
-    return "Error";
-  }else if (input.length=1){
+  if (!Array.isArray(input)){
     return 1;
   }else{
-    return 1+this.getLength(input.shift())
+    for (var i =0;i<input.length;i++){
+      var length = 1+getLength(input.slice[i,input.length])
   }
+  return length
 }
   
 var input = [1,4,5,7,3,2];
-console.log(this.getLength(input));
+console.log(getLength(input));
 
 >A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
