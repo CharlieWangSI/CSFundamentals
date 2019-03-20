@@ -1,4 +1,68 @@
 > Write pseudocode for bubble sort.
-Write pseudocode for quicksort.
-We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
-All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+A: 
+
+FUNCTION bubbleSort(collection)
+   REPEAT
+     SET swapped to false
+
+     FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+       IF collection[i] > collection[i + 1] THEN
+         SET tmp to collection[i]
+         SET collection[i] to collection[i + 1]
+         SET collection[i + 1] to tmp
+         SET swapped to true
+       END IF
+     END FOR
+   UNTIL swapped is FALSE
+
+   RETURN collection
+ END FUNCTION
+
+> Write pseudocode for quicksort.
+A:
+
+quickSort(arr, low, high)
+{
+    if (low < high)
+    {
+        pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);  // 
+        quickSort(arr, pi + 1, high); // 
+    }
+
+partition (arr, low, high)
+{
+    pivot = arr[high];  
+ 
+    i = (low - 1)  
+
+    for (j = low; j <= high- 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;    
+            swap arr[i] and arr[j]
+        }
+    }
+    swap arr[i + 1] and arr[high])
+    return (i + 1)
+}
+}
+
+> We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+
+
+A: We can use the array [E,C,A,B,F,G,D] as example and compare the runtime of different algorithm:
+- merge: we first divide the collection to n, which in this case, 7 collections of one item each, then two runs continuously merge together until the collection is sorted, the time complexity for this type of algorithm is O(nlog(n)) which is O (7log(7)) in this case
+- quick: D is first selected as a pivot point, we then iterates over the collection and compares each item to the pivot point (D), if the item is greater than the pivot point then it is moved to the right of the pivot point, and the item at the pivot points shifts one index to the left. After we've moved items that are greater than pivot point, quick sort recursively applies the previous step to the left and right sides of the collection, the time complexity for this type of algorithm is similar to that of merge sort O(nlog(n)) which is O (7log(7)) in this case.
+- bubble sort: Bubble sort operates by comparing two adjacent items at a time in a collection. In each iteration, it swaps the items based on the sorting logic. Bubble sort may loop through the collection multiple times before the sorting is complete. For each pass through the collection, bubble sort guarantees at least one value is in its proper, sorted position. It has a runtime of O(n^2), which is O(49), which can be seen is much worse
+- selection: The algorithm sorts the collection alphabetically by iterating over it and moving the letter that comes earlier in the alphabet to the front of the collection. It has a runtime of O(n^2), which is O(49), which can be seen is much worse
+- insertion: Insertion sort iterates over an unsorted collection and inserts each element in its preferred location in a new collection. The new collection is a sorted collection that is a partitioned part of the unsorted collection. Average runtime for insertion is O(n),which in this case is O(7), but in the worst case which means the collection is completely reversed, the run time would be O(n^2), which in this case would be O(49), which can be seen is much worse
+
+> All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+A: Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm.
+
+The ideal input should be uniformly distributed array and the number of bucket to use
+
