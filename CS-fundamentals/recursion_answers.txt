@@ -25,10 +25,12 @@ function getLength(input){
   if (!Array.isArray(input)){
     return 1;
   }else{
+    var length = 0
     for (var i =0;i<input.length;i++){
-      var length = 1+getLength(input.slice[i,input.length])
+      length += getLength(input[i])
   }
   return length
+}
 }
   
 var input = [1,4,5,7,3,2];
@@ -38,15 +40,24 @@ console.log(getLength(input));
 
 A: 
 
-function checkPalin(w1,w2){
-  if (w1==w2){
+function checkPalin(word){
+  
+  let words = word.replace(/[^\w]/gi, '').toLowerCase();
+  
+  if (words.length==1 || words.length==0){
     return true;
-  }else if (w1[1]!=w2[-1]){
-    return false;
-  }else{
-    checkPalin(w1.shift(),w2.pop());
   }
+  
+  if (words[0] === words[words.length - 1]) {
+  return checkPalin(words.slice(1, words.length - 1));
+  }
+
+  return false
 }
+
+
+word = "Top spot";
+console.log(checkPalin(word));
 
 > Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
